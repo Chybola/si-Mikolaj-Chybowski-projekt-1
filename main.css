@@ -15,9 +15,6 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 100%);
-  color: var(--muted);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   padding: 48px;
 }
 .search-wrap {
@@ -46,15 +43,7 @@ body {
   padding: 10px 14px;
   gap: 10px;
   border: 1px solid rgba(32, 33, 36, 0.08);
-  transition: box-shadow 150ms ease, border-color 150ms ease;
 }
-
-.search-box:focus-within {
-  box-shadow: 0 8px 30px rgba(26, 115, 232, 0.12);
-  border-color: var(--accent);
-}
-
-.icon-left,
 .icon-right {
   display: flex;
   align-items: center;
@@ -78,6 +67,9 @@ body {
   color: rgba(32, 33, 36, 0.44);
 }
 
+.clear-btn:focus {
+  box-shadow: 0 0 0 4px var(--focus);
+}
 .clear-btn {
   border: 0;
   background: transparent;
@@ -88,10 +80,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-.clear-btn:focus {
-  box-shadow: 0 0 0 4px var(--focus);
-}
-
 .mic-btn {
   display: inline-flex;
   align-items: center;
