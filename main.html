@@ -1,12 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Okienko wyszukiwania — styl Google</title>
+    <link
+      rel="stylesheet"
+      href="main.css
+  "
+    />
   </head>
   <body>
-    <div id="google">Google</div>
+    <main class="search-wrap" role="main">
+      <div class="logo-spot">Wyszukiwarka</div>
+
+      <form class="search-box" role="search" onsubmit="handleSubmit(event)">
+        <div class="icon-left" aria-hidden>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <path
+              d="M11 19c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"
+              stroke="#5f6368"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21 21l-4.35-4.35"
+              stroke="#5f6368"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <input
+          class="search-input"
+          id="q"
+          name="q"
+          type="search"
+          placeholder="Szukaj w Google lub wpisz adres URL"
+          autocomplete="off"
+          aria-label="Pole wyszukiwania"
+        />
+
+        <div class="actions" aria-hidden>
+          <button
+            type="button"
+            class="icon-btn clear-btn"
+            id="clearBtn"
+            title="Wyczyść"
+            aria-label="Wyczyść pole"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="mic-btn"
+            title="Wyszukiwanie głosowe"
+            aria-label="Wyszukiwanie głosowe"
+            id="micBtn"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden
+            >
+              <path
+                d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"
+                stroke="#5f6368"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19 11v1a7 7 0 0 1-14 0v-1"
+                stroke="#5f6368"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 19v3"
+                stroke="#5f6368"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="hint">Naciśnij Enter, aby wyszukać</div>
+    </main>
+
+    <script>
+      const input = document.getElementById("q");
+      const clearBtn = document.getElementById("clearBtn");
+      const micBtn = document.getElementById("micBtn");
+
+      clearBtn.addEventListener("click", () => {
+        input.value = "";
+        input.focus();
+      });
+
+      micBtn.addEventListener("click", () => {
+        micBtn.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(1.06)" },
+            { transform: "scale(1)" },
+          ],
+          { duration: 420 }
+        );
+        input.focus();
+      });
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        const q = input.value.trim();
+        if (!q) {
+          input.focus();
+          return;
+        }
+        const url = "https://www.google.com/search?q=" + encodeURIComponent(q);
+        window.open(url, "_blank");
+      }
+      function updateClear() {
+        clearBtn.style.visibility = input.value ? "visible" : "hidden";
+      }
+      input.addEventListener("input", updateClear);
+      updateClear();
+    </script>
   </body>
 </html>
