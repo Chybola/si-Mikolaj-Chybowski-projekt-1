@@ -1,3 +1,11 @@
+.google {
+  padding-top: 200px;
+  max-width: 200px;
+}
+.left-top {
+  padding-top: 0;
+  display: inline;
+}
 :root {
   --bg: #ffffff;
   --card: #ffffff;
@@ -14,7 +22,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 100%);
+  background: #f6f8fb;
   padding: 48px;
 }
 .search-wrap {
@@ -97,15 +105,6 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-@media (max-width: 420px) {
-  .search-input {
-    font-size: 16px;
-  }
-  .logo-spot {
-    font-size: 16px;
-  }
 }
 
 button.icon-btn {
